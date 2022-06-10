@@ -1,3 +1,4 @@
+import "bulmaswatch/superhero/bulmaswatch.min.css";
 import ReachDom from "react-dom";
 import React, { useState, useEffect, useRef } from "react";
 import * as esBuild from "esbuild-wasm";
@@ -68,7 +69,10 @@ const App = () => {
 
 	return (
 		<div>
-			<CodeEditor />
+			<CodeEditor
+				initialValue="console.log('Hello World');"
+				onChange={(value) => setInput(value)}
+			/>
 			<textarea
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
@@ -76,7 +80,12 @@ const App = () => {
 			<div>
 				<button onClick={onSubmit}>Submit</button>
 			</div>
-			<iframe title="code preview" sandbox="allow-scripts" srcDoc={html} ref={iframe} />
+			<iframe
+				title="code preview"
+				sandbox="allow-scripts"
+				srcDoc={html}
+				ref={iframe}
+			/>
 			<pre>{code}</pre>
 		</div>
 	);
